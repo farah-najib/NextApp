@@ -2,7 +2,6 @@
 
 import Link from 'next/link'
 import { Tab } from '@headlessui/react'
-import Image from 'next/image'
 import classNames from 'classnames'
 import fetcher, { API_URL } from '../../utils/api'
 
@@ -13,11 +12,6 @@ const User = ({ user }) => {
         { name: 'Albums', count: user.albums?.length }
     ]
     return (
-        // <div>
-        //   <h1>User page</h1>
-        //   <h2>{user.name}</h2>
-        //   <p>{user.email}</p>
-        // </div>
         <div className="container py-6 mx-auto">
             <div className="flex flex-col sm:flex-row mt-10">
                 <div className="sm:w-1/3 text-center sm:pr-8 sm:py-8">
@@ -181,15 +175,6 @@ export const getStaticProps = async ({ params }) => {
     }
 }
 
-// export const getStaticPaths = async () => {
-//   const { data } = await Axios.get("https://jsonplaceholder.typicode.com/users");
-//   const posts = data.slice(0, 10);
-//   const paths = posts.map((post) => ({ params: { id: post.id.toString() } }));
-//   return {
-//     paths,
-//     fallback: true,
-//   };
-// };
 export const getStaticPaths = async () => {
     const users = await fetcher(`${API_URL}/users`)
 
